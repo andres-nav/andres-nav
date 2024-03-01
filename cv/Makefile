@@ -1,32 +1,40 @@
 # Makefile for compiling LaTeX document with LuaTeX
 
 # Set the name of your main .tex file (without the .tex extension)
-DOCUMENT_NAME = main
+MAIN = CV
 
 # LuaTeX command
 LUALATEX = lualatex
 
 # PDF viewer command
 PDFVIEWER = zathura
+PDFVIEWERFLAGS = --fork
 
 # Compilation flags
 LATEXFLAGS = -interaction=nonstopmode
 
+# Language selection
+LANGUAGE_EN = en
+LANGUAGE_ES = es
+
+# Default language (use environment variable if set, otherwise default to LANGUAGE_EN)
+LANGUAGE ?= $(LANGUAGE_EN)
+
 # Output directory
-OUTPUT_DIR = en
+OUTPUT_DIR = $(LANGUAGE)
 
-.PHONY: all clean view
+.PHONY: all en es view
 
-all: $(OUTPUT_DIR)/$(DOCUMENT_NAME).pdf
+all: mkdir main view
 
-$(OUTPUT_DIR)/$(DOCUMENT_NAME).pdf: $(DOCUMENT_NAME).tex | $(OUTPUT_DIR)
-	$(LUALATEX) $(LATEXFLAGS) -output-directory=$(OUTPUT_DIR) $<
+main: $(MAIN).tex | $(OUTPUT_DIR)
+	$(LUALATEX) $(LATEXFLAGS) -output-directory=$(OUTPUT_DIR) -jobname=$(MAIN) "\def\mylang{$(LANGUAGE)}\input{$(MAIN)}"
 
-$(OUTPUT_DIR):
+mkdir:
 	mkdir -p $(OUTPUT_DIR)
 
 clean:
-	rm -rf $(OUTPUT_DIR) $(DOCUMENT_NAME).aux $(DOCUMENT_NAME).log $(DOCUMENT_NAME).out $(DOCUMENT_NAME).toc
+	rm -rf $(OUTPUT_DIR)/$(MAIN).aux $(OUTPUT_DIR)/$(MAIN).log $(OUTPUT_DIR)/$(MAIN).out $(OUTPUT_DIR)/$(MAIN).toc
 
-view: $(OUTPUT_DIR)/$(DOCUMENT_NAME).pdf
-	$(PDFVIEWER) $< &
+view:
+	@if ! pgrep -af "$(PDFVIEWER) $(PDFVIEWERFLAGS) $(OUTPUT_DIR)/$(MAIN).pdf" > /dev/null; then $(PDFVIEWER) $(PDFVIEWERFLAGS) $(OUTPUT_DIR)/$(MAIN).pdf; fi

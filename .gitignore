@@ -5,3 +5,6 @@
 cv/CV.pdf
 /.direnv/
 /.envrc
+/cv/.auctex-auto/
+*.aux
+*.out
