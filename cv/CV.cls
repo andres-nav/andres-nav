@@ -22,19 +22,19 @@
 \def\en{en}%
 \def\es{es}%
 \newcommand{\dumblang}[2]{%
-    \ifx\mylang\undefined{
-        \PackageError{CV}{Language not set. Please define the language using the environment variable.}{}%
-    }\else{
-        \ifx\mylang\en{
-            #1%
-        }\else{
-            \ifx\mylang\es{
-                #2%
-            }\else{
-                \PackageError{CV}{Unknown language '\mylang'. Supported languages are '\en' and '\es'.}{}%
-            }\fi
-        }\fi
-    }\fi
+	\ifx\mylang\undefined{
+			\PackageError{CV}{Language not set. Please define the language using the environment variable.}{}%
+		}\else{
+			\ifx\mylang\en{
+					#1%
+				}\else{
+					\ifx\mylang\es{
+							#2%
+						}\else{
+							\PackageError{CV}{Unknown language '\mylang'. Supported languages are '\en' and '\es'.}{}%
+						}\fi
+				}\fi
+		}\fi
 }
 
 % Publications
@@ -55,7 +55,7 @@
 \def \firstnamefont {sourcesanspro-SemiBold}
 \def \secondnamefont {sourcesanspro-light}
 \def \titlefont {\firstnamefont}
-\def \namefontsize {9.5}
+\def \namefontsize {10.5}
 
 %Main Font Definitions
 \def \pathmainfont {fonts/inter/}
@@ -63,24 +63,24 @@
 \def \mainfontbold {inter-semibold}
 % \def \mainbolditalicfont {}
 % \def \mainitalicfont {}
-\def \mainfontsize {9}
+\def \mainfontsize {10}
 \def \mainsansfont {inter-light}
 
 %Main Subheading Font Definitions
 %Used for company name and sub-skills
 \def \pathsubheadingfont {\pathtitlefont}
 \def \subheadingfont {\titlefont}
-\def \subheadingsize {12}
+\def \subheadingsize {13}
 
 %Main Job Descriptor and Location Font Definitions
 %Used for company name and sub-skills
-\def \pathdescriptorfont {\pathsubheadingfont}
-\def \descriptorfont {\secondnamefont}
-\def \descriptorsize {9}
-\def \pathlocationfont {\pathsubheadingfont}
-\def \locationfont {\subheadingfont}
-\def \locationsize {9}
-\def \locationrightsize {10}
+\def\pathdescriptorfont{\pathsubheadingfont}
+\def\descriptorfont{\secondnamefont}
+\def\descriptorsize{10}
+\def\pathlocationfont{\pathsubheadingfont}
+\def\locationfont{\subheadingfont}
+\def\locationsize{9}
+\def\locationrightsize{10}
 
 %Main Monospace Font Definitions
 %Used for Job Title and Contact Line
@@ -137,6 +137,26 @@
 	%% \vspace{-20pt}
 }
 
+% External link command
+\newcommand{\externallink}{%
+    \tikz[x=1.2ex, y=1.2ex, baseline=-0.05ex]{%
+        \begin{scope}[x=1ex, y=1ex]
+            \clip(-0.1,-0.1)
+                --++ (-0, 1.2)
+                --++ (0.6, 0)
+                --++ (0, -0.6)
+                --++ (0.6, 0)
+                --++ (0, -1);
+            \path[draw,
+                line width = 0.5,
+                rounded corners=0.5]
+                (0,0) rectangle (1,1);
+        \end{scope}
+        \path[draw, line width = 0.5] (0.5, 0.5) -- (1, 1);
+        \path[draw, line width = 0.5] (0.6, 1) -- (1, 1) -- (1, 0.6);
+        }
+    }
+
 % Section separators
 \usepackage{titlesec}
 \titlespacing{\section}{0pt}{10pt}{10pt}
@@ -147,23 +167,32 @@
 % Headings command
 \titleformat{\section}
 {\color{title} \scshape\fontspec[Path = \pathtitlefont]{\titlefont}\fontsize{16pt}{24pt}\selectfont \raggedright}
-{}{10pt}{}[{\titlerule[1pt]}]
+{}{10pt}{}[{\titlerule[2pt]}]
 
 % Subheadings command
 \titleformat{\subsection}{
 	\color{subheadings}\fontspec[Path = \pathsubheadingfont ]{\subheadingfont}\fontsize{\subheadingsize}{14pt}\selectfont\bfseries\uppercase}{}{0em}{}
 
 %Subheadings on the right
-\newcommand{\runsubsection}[1]{
-	\color{subheadings}\fontspec[Path = \pathsubheadingfont ]{\subheadingfont}\fontsize{\subheadingsize}{14pt}\selectfont\bfseries\uppercase {#1} \normalfont}
+\newcommand{\runsubsection}[4]{
+  \vspace{10pt}
+	\color{subheadings}\fontspec[Path = \pathsubheadingfont ]{\subheadingfont}\fontsize{\subheadingsize}{14pt}\selectfont\bfseries%
+  \ifthenelse{\equal{#2}{}}{}{\href{#2}{\externallink}}%
+  \uppercase{#1}%
+  \normalfont%
+  \descript{#3}
+  \locationright{#4}
+}
 
 % Descriptors command
 \newcommand{\descript}[1]{
-	\color{subheadings}\raggedright\scshape\fontspec[Path = \pathdescriptorfont]{\descriptorfont}\fontsize{\descriptorsize}{13pt}\selectfont {|\hspace{3pt} #1} \normalfont}
+	\color{subheadings}\raggedright\scshape\fontspec[Path = \pathdescriptorfont]{\descriptorfont}\fontsize{\descriptorsize}{13pt}\selectfont {
+  \ifthenelse{\equal{#1}{}}{}{|\hspace{4pt} #1}%
+  } \normalfont}
 
 % Location command
 \newcommand{\locationright}[1]{
-	\color{headings}\hfill\fontspec[Path = \pathlocationfont]{\locationfont}\fontsize{\locationrightsize}{12pt}\selectfont {#1} \normalfont \\}
+	\hfill\color{headings}\fontspec[Path = \pathlocationfont]{\locationfont}\fontsize{\locationrightsize}{12pt}\selectfont {#1} \normalfont \\}
 
 \newcommand{\location}[1]{\vspace{-\topsep}\vspace{2pt}
 	\hspace{10pt}\color{headings}\raggedright\fontspec[Path = \pathlocationfont]{\locationfont}\fontsize{\locationsize}{12pt}\selectfont {#1\\} \normalfont \vspace{5pt}}
@@ -181,7 +210,7 @@
 }
 
 %Contact Line
-\newcommand{\contactline}[5]{
+\newcommand{\contactline}[4]{
 	%% \vspace{\fill}
 	%% \begin{flushright}
 
@@ -189,7 +218,6 @@
 	\contact{#2}{github}{light}
 	\contact{#3}{globe}{solid}
 	\contact{#4}{at}{solid}
-	\contact{#5}{phone}{solid}
 
 	%% \end{flushright}
 	%% \vspace{\fill}
@@ -204,9 +232,9 @@
 
 \usepackage[most]{tcolorbox}
 \newenvironment{tightemize}{
-	\vspace{-10pt}
+	\vspace{-5pt}
 	\begin{justify}\begin{itemize}[label=\textbullet{}, leftmargin=20pt]
-			\itemsep1pt \parskip0pt \parsep0pt
+			\itemsep10pt \parskip0pt \parsep0pt
 			}
 			{\end{itemize}\end{justify}}
 
@@ -214,7 +242,7 @@
 \newcommand{\summary}[1]{
 	\vspace{-5pt}
 	\begin{justify}
-		\raggedright
+		\raggedright%
 		#1
 	\end{justify}
 	\vspace{-15pt}
