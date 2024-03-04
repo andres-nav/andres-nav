@@ -109,7 +109,6 @@
 \usepackage[]{float}
 \usepackage[]{tikz}
 \newcommand{\namesection}[4]{
-	#4
 
 	\begin{minipage}[t]{0.60\textwidth}
 		\RaggedRight{
@@ -117,16 +116,16 @@
 			\fontsize{30pt}{30pt}
 			\fontspec[Path = \pathtitlefont]{\firstnamefont}\selectfont #1
 			\fontspec[Path = \pathtitlefont]{\secondnamefont}\selectfont #2
-		} \\[5pt]
+		} \\[10pt]
 
 		\noindent\makebox[\linewidth]{\color{title}\rule{\paperwidth}{0pt}}
 
 	\end{minipage}
-	\hfill
+	% \hfill
 	\begin{minipage}[t]{0.35\textwidth}
 
 		\tikz[remember picture,overlay] \node[anchor=north east, inner sep = 0.01\textwidth] at (current page.north east) {
-			\includegraphics[width=0.5\textwidth]{#3}\hspace{0.1\textwidth}
+			\includegraphics[width=0.4\textwidth]{#3}\hspace{0.05\textwidth}
 		};
 
 
@@ -134,7 +133,8 @@
 
 		%% \noindent\makebox[\linewidth]{\color{title}\rule{\paperwidth}{0pt}}
 	\end{minipage}
-	%% \vspace{-20pt}
+	\vspace{-10pt}
+    #4
 }
 
 % External link command
@@ -160,9 +160,8 @@
 % Section separators
 \usepackage{titlesec}
 \titlespacing{\section}{0pt}{10pt}{10pt}
-\titlespacing{\subsection}{0pt}{0pt}{0pt}
+\titleformat{\subsection}[block]{\bfseries\itshape\normalsize\hspace{2em}}{\thesubsection}{1em}{}
 \newcommand{\sectionsep}{\vspace{5pt}}
-\newcommand{\padding}{\hspace{10pt}}
 
 % Headings command
 \titleformat{\section}
@@ -171,19 +170,28 @@
 
 % Subheadings command
 \titleformat{\subsection}{
-	\color{subheadings}\fontspec[Path = \pathsubheadingfont ]{\subheadingfont}\fontsize{\subheadingsize}{14pt}\selectfont\bfseries\uppercase}{}{0em}{}
+	\color{subheadings}\fontspec[Path = \pathsubheadingfont ]{\subheadingfont}\fontsize{\subheadingsize}{12pt}\selectfont\bfseries\uppercase}{}{0em}{}
+
 
 %Subheadings on the right
-\newcommand{\runsubsection}[4]{
-  \vspace{10pt}
+\newcommand{\topsubsection}[2]{
+  \sectionsep%
 	\color{subheadings}\fontspec[Path = \pathsubheadingfont ]{\subheadingfont}\fontsize{\subheadingsize}{14pt}\selectfont\bfseries%
+  \uppercase{#1}%
+  \normalfont%
+  \descript{#2}
+  \locationright{}
+  \sectionsep%
+}
+\newcommand{\runsubsection}[4]{
+  \sectionsep%
+	\fontsize{\subheadingsize}{12pt}%
   \ifthenelse{\equal{#2}{}}{}{\href{#2}{\externallink}}%
   \uppercase{#1}%
   \normalfont%
   \descript{#3}
   \locationright{#4}
 }
-
 % Descriptors command
 \newcommand{\descript}[1]{
 	\color{subheadings}\raggedright\scshape\fontspec[Path = \pathdescriptorfont]{\descriptorfont}\fontsize{\descriptorsize}{13pt}\selectfont {
@@ -210,7 +218,7 @@
 }
 
 %Contact Line
-\newcommand{\contactline}[4]{
+\newcommand{\contactline}[5]{
 	%% \vspace{\fill}
 	%% \begin{flushright}
 
@@ -218,6 +226,7 @@
 	\contact{#2}{github}{light}
 	\contact{#3}{globe}{solid}
 	\contact{#4}{at}{solid}
+	\contact{#5}{phone}{solid}
 
 	%% \end{flushright}
 	%% \vspace{\fill}
@@ -228,24 +237,23 @@
 	\setbox0=\hbox{\includegraphics[scale=0.10,trim={0 0.7cm 0cm 0cm}]{#1} {#2}}
 	\parbox{\wd0}{\box0}\endgroup}
 
+% add margin
+\usepackage{changepage}
 % Bullet Lists with fewer gaps command
 
 \usepackage[most]{tcolorbox}
 \newenvironment{tightemize}{
-	\vspace{-5pt}
-	\begin{justify}\begin{itemize}[label=\textbullet{}, leftmargin=20pt]
-			\itemsep10pt \parskip0pt \parsep0pt
+	\begin{justify}\begin{itemize}[label=\textbullet{}, leftmargin=30pt]
+			\itemsep5pt \parskip0pt \parsep0pt
 			}
 			{\end{itemize}\end{justify}}
 
 % Summery command
 \newcommand{\summary}[1]{
-	\vspace{-5pt}
 	\begin{justify}
 		\raggedright%
 		#1
 	\end{justify}
-	\vspace{-15pt}
 }
 
 % Local Variables:
