@@ -15,7 +15,7 @@
         mkShell {
           packages = [
             gnumake
-            pkgs.texlive.combined.scheme-medium
+            texlive.combined.scheme-full
           ];
         };
     };
