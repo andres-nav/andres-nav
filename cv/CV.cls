@@ -134,28 +134,28 @@
 		%% \noindent\makebox[\linewidth]{\color{title}\rule{\paperwidth}{0pt}}
 	\end{minipage}
 	\vspace{-10pt}
-    #4
+	#4
 }
 
 % External link command
 \newcommand{\externallink}{%
-    \tikz[x=1.2ex, y=1.2ex, baseline=-0.05ex]{%
-        \begin{scope}[x=1ex, y=1ex]
-            \clip(-0.1,-0.1)
-                --++ (-0, 1.2)
-                --++ (0.6, 0)
-                --++ (0, -0.6)
-                --++ (0.6, 0)
-                --++ (0, -1);
-            \path[draw,
-                line width = 0.5,
-                rounded corners=0.5]
-                (0,0) rectangle (1,1);
-        \end{scope}
-        \path[draw, line width = 0.5] (0.5, 0.5) -- (1, 1);
-        \path[draw, line width = 0.5] (0.6, 1) -- (1, 1) -- (1, 0.6);
-        }
-    }
+	\tikz[x=1.2ex, y=1.2ex, baseline=-0.05ex]{%
+		\begin{scope}[x=1ex, y=1ex]
+			\clip(-0.1,-0.1)
+			--++ (-0, 1.2)
+			--++ (0.6, 0)
+			--++ (0, -0.6)
+			--++ (0.6, 0)
+			--++ (0, -1);
+			\path[draw,
+				line width = 0.5,
+				rounded corners=0.5]
+			(0,0) rectangle (1,1);
+		\end{scope}
+		\path[draw, line width = 0.5] (0.5, 0.5) -- (1, 1);
+		\path[draw, line width = 0.5] (0.6, 1) -- (1, 1) -- (1, 0.6);
+	}
+}
 
 % Section separators
 \usepackage{titlesec}
@@ -175,28 +175,28 @@
 
 %Subheadings on the right
 \newcommand{\topsubsection}[2]{
-  \sectionsep%
+	\sectionsep%
 	\color{subheadings}\fontspec[Path = \pathsubheadingfont ]{\subheadingfont}\fontsize{\subheadingsize}{14pt}\selectfont\bfseries%
-  \uppercase{#1}%
-  \normalfont%
-  \descript{#2}
-  \locationright{}
-  \sectionsep%
+	\uppercase{#1}%
+	\normalfont%
+	\descript{#2}
+	\locationright{}
+	\sectionsep%
 }
 \newcommand{\runsubsection}[4]{
-  \sectionsep%
+	\sectionsep%
 	\fontsize{\subheadingsize}{12pt}%
-  \ifthenelse{\equal{#2}{}}{}{\href{#2}{\externallink}}%
-  \uppercase{#1}%
-  \normalfont%
-  \descript{#3}
-  \locationright{#4}
+	\ifthenelse{\equal{#2}{}}{}{\href{#2}{\externallink}}%
+	\uppercase{#1}%
+	\normalfont%
+	\descript{#3}
+	\locationright{#4}
 }
 % Descriptors command
 \newcommand{\descript}[1]{
 	\color{subheadings}\raggedright\scshape\fontspec[Path = \pathdescriptorfont]{\descriptorfont}\fontsize{\descriptorsize}{13pt}\selectfont {
-  \ifthenelse{\equal{#1}{}}{}{|\hspace{4pt} #1}%
-  } \normalfont}
+		\ifthenelse{\equal{#1}{}}{}{|\hspace{4pt} #1}%
+	} \normalfont}
 
 % Location command
 \newcommand{\locationright}[1]{
