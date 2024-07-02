@@ -9,7 +9,7 @@ My name is Andrés Navarro Pedregal and I'm an aspiring Solutions Architect. I'm
 <h3>Where to find me</h3>
 <p>
 <a href="https://www.linkedin.com/in/andresnav" target="_blank"><img alt="LinkedIn" src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> 
-<a href="https://andresnav.com" target="_blank"><img alt="Personal Site" src="https://img.shields.io/badge/Personal-Site-%2312100E.svg?&style=for-the-badge&logo=website&logoColor=white"/></a>
+<a href="https://andresnav.com" target="_blank"><img alt="Personal Site" src="https://img.shields.io/badge/Personal%20Site-%2312100E.svg?&style=for-the-badge"/></a>
 </p>
 
 ## More about me
