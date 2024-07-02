@@ -1,16 +1,18 @@
 [![Header](https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/readme_header.png "Header")](https://andresnav.com/)
 
-# Hello, folks! <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px" height="30px" />
+<p>
+<a href="https://andresnav.com" target="_blank"><img alt="Personal Site" src="https://img.shields.io/badge/Personal%20Site-%23504945.svg?&style=for-the-badge"/></a>
+<a href="https://www.linkedin.com/in/andresnav" target="_blank"><img alt="LinkedIn" src="https://img.shields.io/badge/linkedin-%23076678.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> 
+</p>
+<a href="https://github.com/andres-nav/andres-nav/blob/feature/readme/cv/en/CV.pdf?raw=true" target="_blank"><img alt="CV" src="https://img.shields.io/badge/CV-%239d0006.svg?&style=for-the-badge"/></a>
+</p>
+
+# Hello <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px" height="30px" />!
 
 My name is Andrés Navarro Pedregal and I'm an aspiring Solutions Architect. I'm from Spain, living in Geneva.
 
-## What I'm up to
+## Where to find me
 
-<h3>Where to find me</h3>
-<p>
-<a href="https://www.linkedin.com/in/andresnav" target="_blank"><img alt="LinkedIn" src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> 
-<a href="https://andresnav.com" target="_blank"><img alt="Personal Site" src="https://img.shields.io/badge/Personal%20Site-%2312100E.svg?&style=for-the-badge"/></a>
-</p>
 
 ## More about me
 
