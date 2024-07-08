@@ -645,7 +645,6 @@ pdfborderstyle={/S/U/W 1} % underline style
 % Define a paragraph for CV
 \newenvironment{cvparagraph}{%
 	\vspace{\acvSectionContentTopSkip}
-	\vspace{-3mm}
 	\paragraphstyle
 }{%
 	\par
