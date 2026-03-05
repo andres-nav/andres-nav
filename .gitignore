@@ -1,0 +1,15 @@
+*.log
+*/auto/
+*/*.aux
+*/*.out
+cv/CV.pdf
+/.direnv/
+/.envrc
+/cv/.auctex-auto/
+*.aux
+*.out
+/cv/code/.auctex-auto/
+/cv/en/CV.ent
+*.fdb_latexmk
+*.fls
+**/build
